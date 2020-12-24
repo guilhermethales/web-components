@@ -1,0 +1,29 @@
+
+<!-- PROS -->
+<!-- Automatic de-duplication of imports (meaning it will not be imported multiple times) -->
+<!-- Writing HTML & CSS is more natural and IDE support isn't an issue -->
+<!-- CONS -->
+<!-- Currently the HTML import spec is contentious and not well supported -->
+<!-- Even when polyfilled there are caveats which create bad code smells -->
+<!-- As the JS live in the HTML file, it's hard to transpile it with current tools -->
+
+<template>
+  <style>
+    p {
+      color: red;
+    }
+  </style>
+  <p>My Web Component!</p>
+</template>
+
+<script>
+  const $owner = (document._currentScript || document.currentScript).ownerDocument;
+  const $template = $owner.querySelector('template');
+  class MyComponent extends HTMLElement {
+    connectedCallback() {
+      const $content = document.importNode($template.content, true);
+      this.appendChild($content);
+    }
+  }
+  window.customElements.define('my-component', MyComponent);
+</script>
