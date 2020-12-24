@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Pratical Guide to Vanilla Web Components: Module 1 - Web Components Fundamentals </title>
+  <link rel="import" href="notice.html" id="notice" />
+</head>
+
+<body>
+  <script>
+    const $link = document.getElementById('notice');
+    const content = $link.import.querySelector('.notice-frame');
+    document.body.appendChild(content.cloneNode(true));
+  </script>
+</body>
+</html>
