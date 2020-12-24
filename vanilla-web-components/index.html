@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Pratical Guide to Vanilla Web Components: Module 1 - Web Components Fundamentals </title>
+
+  <script>
+    class MyCustomElement extends HTMLElement {
+      constructor() {
+        super();
+        console.log('My Custom Element constructed');
+      }
+
+      connectedCallback() {
+        console.log('My Custom Element added to the DOM');
+      }
+
+      static get observedAttributes() {
+        return ['demo'];
+      }
+
+      attributeChangedCallback(attrName, oldVal, newVal) {
+        console.log('Attribute Changed!', attrName, oldVal, newVal)
+      }
+
+      disconnectedCallback() {
+        console.log('My Custom Element removed from the DOM');
+      }
+    }
+
+    window.customElements.define('my-custom-element', MyCustomElement);
+  </script>
+</head>
+
+<body>
+  <script>
+    // Create an instance of our Custom Element
+    let $ce = document.createElement('my-custom-element');
+
+    setTimeout(() => {
+      document.body.appendChild($ce);
+    }, 3000);
+  </script>
+</body>
+</html>
