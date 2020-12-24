@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Pratical Guide to Vanilla Web Components: Module 1 - Web Components Fundamentals </title>
+
+  <script>
+    class CustomAnchor extends HTMLAnchorElement {
+      connectedCallback() {
+        this.addEventListener('click', e => {
+          e.preventDefault();
+
+          const result = confirm('Are you sure?');
+          if(result) {
+            window.location.href = e.target.href;
+          }
+        })
+      }
+    }
+
+    window.customElements.define('custom-anchor', CustomAnchor, { extends: 'a' });
+  </script>
+</head>
+
+<body>
+  <a is="custom-anchor" href="https://www.google.com/">Go to Google</a>
+</body>
+</html>
