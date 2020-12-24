@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Pratical Guide to Vanilla Web Components: Module 1 - Web Components Fundamentals </title>
+</head>
+
+<body>
+  <template id="list-item">
+    <li>
+      <h1>A Movie Title</h1>
+      <p>A movie plot.</p>
+    </li>
+  </template>
+  <ul id="movie-list"></ul>
+  
+  <script>
+    const $items = [
+      {
+        title: 'The Lord of the Rings: The Fellowship of the Ring',
+        plot: 'A meek Hobbit from the Shire and eight companions...'
+      },
+      {
+        title: 'The Lord of the Rings: The Two Towers',
+        plot: 'While Frodo and Sam edge closer to Mordor...'
+      }
+    ];
+    const $template = document.getElementById('list-item');
+    const $list = document.getElementById('movie-list');
+
+    $items.forEach((movie) => {
+      const $clone = document.importNode($template.content, true);
+      $clone.querySelector('h1').innerText = movie.title;
+      $clone.querySelector('p').innerText = movie.plot;
+      $list.appendChild($clone);
+    });
+  </script>
+</body>
+</html>
