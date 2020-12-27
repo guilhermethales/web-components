@@ -5,7 +5,8 @@
 	<meta charset="UTF-8">
 	<title>Web Components</title><!-- load webcomponents bundle, which includes all the necessary polyfills -->
 	<script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
-	<style>
+	<script src="dist/custom-style-interface.min.js"></script>
+	<style class="document-style">
 		html, body {
 			font-size: 1.5em;
 		}
@@ -25,7 +26,11 @@
 			var $script = document.createElement('script');
 			$script.src = 'dist/rw-star-rating.js';
 			document.head.appendChild($script);
-		})
+		});
+
+		if(window.ShadyCSS && ShadyCSS.CustomStyleInterface) {
+			ShadyCSS.CustomStyleInterface.addCustomStyle(document.querySelector('style.document-style'));
+		}
 	</script>
 </body>
 </html>
