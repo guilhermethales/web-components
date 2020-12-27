@@ -37,7 +37,7 @@ class RwStarRating extends HTMLElement {
         }
 
         .container {
-          color: #c5c5c5;
+          color: var(--star-default-color, #c5c5c5);
           font-size: 1em;
           line-height: 1em;
           margin: 0 auto;
@@ -47,7 +47,7 @@ class RwStarRating extends HTMLElement {
         }
         
         .container .top {
-          color: #e8bd06;
+          color: var(--star-selected-color, #e8bd06);
           padding: 0;
           position: absolute;
           z-index: 1;
@@ -74,7 +74,7 @@ class RwStarRating extends HTMLElement {
         
         .container .bottom > span:hover,
         .container .bottom > span:hover ~ span {
-          color: #e7bd06;
+          color: var(--star-hover-color, #e7bd06);
         }
 
         :host([disabled]) .container {
