@@ -3,8 +3,8 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Web Components</title>
-	<script src="rw-star-rating.js"></script>
+	<title>Web Components</title><!-- load webcomponents bundle, which includes all the necessary polyfills -->
+	<script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 	<style>
 		html, body {
 			font-size: 1.5em;
@@ -20,5 +20,12 @@
 <body>
 	<p>Star Rating: <rw-star-rating id="sr" value="2"></rw-star-rating></p>
 	<!--<p>Disabled Rating: <rw-star-rating id="sr" disabled></rw-star-rating></p>-->
+	<script>
+		window.addEventListener('WebComponentsReady', function() {
+			var $script = document.createElement('script');
+			$script.src = 'dist/rw-star-rating.js';
+			document.head.appendChild($script);
+		})
+	</script>
 </body>
 </html>
