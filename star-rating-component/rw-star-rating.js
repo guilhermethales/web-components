@@ -101,6 +101,15 @@ class RwStarRating extends HTMLElement {
 
     this._disabled = (this.getAttribute('disabled') !== null);
     this._top = this._root.querySelector('.top');
+    this._bottom = this._root.querySelector('.bottom');
+    this._bottom.addEventListener('click', (event) => {
+      if(this._disabled !== true && event.target.dataset.value !== undefined) {
+        if(this._value !== event.target.dataset.value) {
+          this.dispatchEvent(new Event('change'));
+          this.value = event.target.dataset.value;
+        }
+      }
+    });
   }
 
   _render() {
