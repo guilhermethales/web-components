@@ -1,10 +1,13 @@
 class RwStarRating extends HTMLElement {
   constructor() {
     super();
-
+    // Shadow root
     this._root = this.attachShadow({ mode: 'open' });
+    // Elements
     this._$top = null;
     this._$bottom = null;
+    // Data
+    this._disabled = null;
   }
 
   connectedCallback() {
@@ -60,6 +63,19 @@ class RwStarRating extends HTMLElement {
         .container .bottom > span:hover ~ span {
           color: #e7bd06;
         }
+
+        :host([disabled]) .container {
+          cursor: no-drop;
+        }
+        
+        :host([disabled]) .container .top {
+          display: block;
+        }
+        
+        :host([disabled]) .container .bottom > span:hover,
+        :host([disabled]) .container .bottom > span:hover ~ span {
+          color: inherit;
+        }
       </style>
     
       <div class="container">
@@ -71,6 +87,22 @@ class RwStarRating extends HTMLElement {
         </div>
       </div>
     `;
+
+    this._disabled = (this.getAttribute('disabled') !== null);
+  }
+
+  static get observedAttributes() {
+    return ['disabled'];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if(oldValue !== newValue) {
+      switch(name) {
+        case 'disabled':
+          this._disabled = (newValue !== null);
+          break;
+      }
+    }
   }
 }
 
