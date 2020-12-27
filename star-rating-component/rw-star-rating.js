@@ -8,6 +8,17 @@ class RwStarRating extends HTMLElement {
     this._$bottom = null;
     // Data
     this._disabled = null;
+    this._value = 0;
+  }
+
+  set value(value) {
+    if(this._value === value) return;
+    this._value = value;
+    this._render();
+  }
+
+  get value() {
+    return this._value;
   }
 
   connectedCallback() {
@@ -89,6 +100,13 @@ class RwStarRating extends HTMLElement {
     `;
 
     this._disabled = (this.getAttribute('disabled') !== null);
+    this._top = this._root.querySelector('.top');
+  }
+
+  _render() {
+    if(this._top !== null) {
+      this._top.style.width = ((this._value * 10) * 2) + '%';
+    }
   }
 
   static get observedAttributes() {
