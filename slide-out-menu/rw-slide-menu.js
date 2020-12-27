@@ -8,6 +8,17 @@ class RwSlideMenu extends HTMLElement {
     this._open = false;
   }
 
+  set open(value) {
+    const result = value === true;
+    if(this._open === value) return;
+    this._open = result;
+    this._render();
+  }
+
+  get open() {
+    return this._open;
+  }
+
   connectedCallback() {
     this._root.innerHTML = `
       <style>
@@ -78,14 +89,23 @@ class RwSlideMenu extends HTMLElement {
           background-color: #0d152d;
           color: white;
         }
+
+        :host([backdrop="false"]) .frame.open {
+          pointer-events: none;
+          background-color: inherit;
+        }
+      
+        :host([backdrop="false"]) .frame.open .container {
+          pointer-events: auto;
+        }
       </style>
-      <div class="frame">
+      <div class="frame" data-close="true">
         <nav class="container">
           <div class="title">
             <div class="title-content">
               Menu
             </div>
-            <a class="close">&#10006;</a>
+            <a class="close" data-close="true">&#10006;</a>
           </div>
 
           <div class="content">
@@ -94,6 +114,26 @@ class RwSlideMenu extends HTMLElement {
         </nav>
       </div>
     `;
+
+    this._$frame = this._root.querySelector('.frame');
+    this._$frame.addEventListener('click', (event) => {
+      if(event.target.dataset.close === "true") {
+        this._open = false;
+        this._render();
+      }
+    })
+  }
+
+  _render() {
+    if(this._$frame !== null) {
+      if(this._open) {
+        this._$frame.classList.add('open');
+        this.dispatchEvent(new CustomEvent('menu-opened'));
+      } else {
+        this._$frame.classList.remove('open');
+        this.dispatchEvent(new CustomEvent('menu-closed'));
+      }
+    }
   }
 }
 
