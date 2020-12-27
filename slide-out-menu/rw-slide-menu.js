@@ -68,6 +68,16 @@ class RwSlideMenu extends HTMLElement {
         .frame.open .container {
           transform: none;
         }
+
+        :host([theme="red"]) .title {
+          background-color: #E23f24;
+          color: white;
+        }
+
+        :host([theme="blue"]) .title {
+          background-color: #0d152d;
+          color: white;
+        }
       </style>
       <div class="frame">
         <nav class="container">
