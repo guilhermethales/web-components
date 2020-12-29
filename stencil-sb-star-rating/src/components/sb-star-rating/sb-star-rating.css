@@ -1,0 +1,57 @@
+:host {
+  width: 8.8rem;
+  height: 2rem;
+  display: inline-block;
+  overflow: hidden;
+  user-select: none;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+
+.container {
+  color: var(--star-default-color, #333);
+  cursor: pointer;
+  position: relative;
+  font-size: 2rem;
+}
+
+.container .top {
+  color: var(--star-selected-color, #e8bd06);
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 0;
+  z-index: 1;
+}
+
+.container:hover .top {
+  display: none;
+}
+
+.container .bottom {
+  display: block;
+  direction: rtl;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.container .bottom > span:hover,
+.container .bottom span:hover ~ span {
+  color: var(--star-hover-color, #e7bd06);
+}
+
+:host([disabled]) .container {
+  cursor: no-drop;
+}
+
+:host([disabled]) .container .top {
+  display: block;
+}
+
+:host([disabled]) .container .bottom > span:hover,
+:host([disabled]) .container .bottom > span:hover ~ span {
+  color: inherit;
+}
