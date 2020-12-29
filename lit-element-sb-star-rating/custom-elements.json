@@ -1,0 +1,40 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "sb-star-rating",
+      "path": "./src/sb-star-rating.ts",
+      "attributes": [
+        {
+          "name": "value",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "styles",
+          "type": "{ width: string; }",
+          "default": "{\"width\":\"0\"}"
+        }
+      ]
+    }
+  ]
+}

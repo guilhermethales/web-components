@@ -1,0 +1,9 @@
+/node_modules/
+/lib/
+/test/
+
+# top level source
+sb-star-rating.js
+sb-star-rating.js.map
+sb-star-rating.d.ts
+sb-star-rating.d.ts.map
