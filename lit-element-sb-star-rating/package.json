@@ -1,6 +1,6 @@
 {
-  "name": "lit-element-sb-star-rating",
-  "version": "1.0.0",
+  "name": "@guilhermethales/lit-element-sb-star-rating",
+  "version": "1.0.1",
   "description": "A simple web component",
   "main": "sb-star-rating.js",
   "module": "sb-star-rating.js",
@@ -65,5 +65,13 @@
     "rollup-plugin-terser": "^5.3.0",
     "typescript": "^3.8.3",
     "web-component-analyzer": "^1.0.3"
+  },
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guilhermethales/web-components/tree/main/lit-element-sb-star-rating"
   }
 }
