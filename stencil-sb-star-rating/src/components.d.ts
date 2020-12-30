@@ -6,36 +6,36 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface SbStarRating {
+    interface StencilSbStarRating {
         "disabled": boolean;
         "value": number;
     }
 }
 declare global {
-    interface HTMLSbStarRatingElement extends Components.SbStarRating, HTMLStencilElement {
+    interface HTMLStencilSbStarRatingElement extends Components.StencilSbStarRating, HTMLStencilElement {
     }
-    var HTMLSbStarRatingElement: {
-        prototype: HTMLSbStarRatingElement;
-        new (): HTMLSbStarRatingElement;
+    var HTMLStencilSbStarRatingElement: {
+        prototype: HTMLStencilSbStarRatingElement;
+        new (): HTMLStencilSbStarRatingElement;
     };
     interface HTMLElementTagNameMap {
-        "sb-star-rating": HTMLSbStarRatingElement;
+        "stencil-sb-star-rating": HTMLStencilSbStarRatingElement;
     }
 }
 declare namespace LocalJSX {
-    interface SbStarRating {
+    interface StencilSbStarRating {
         "disabled"?: boolean;
         "value"?: number;
     }
     interface IntrinsicElements {
-        "sb-star-rating": SbStarRating;
+        "stencil-sb-star-rating": StencilSbStarRating;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "sb-star-rating": LocalJSX.SbStarRating & JSXBase.HTMLAttributes<HTMLSbStarRatingElement>;
+            "stencil-sb-star-rating": LocalJSX.StencilSbStarRating & JSXBase.HTMLAttributes<HTMLStencilSbStarRatingElement>;
         }
     }
 }
